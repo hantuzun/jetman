@@ -7,12 +7,23 @@ var util = require('./lib/util.js');
 
 function writeCollection(name, tests) {
     function requireTest(test) {
-         return require(test);
+        // try {
+        testModule =  require(test);
+        // } catch (Exception e) {
+        //     throw new Exception();
+        // }
+        // if (testModule.config == undefined) {
+        //     throw new Exception();
+        // }
+        // if (testModule.tests == undefined ) {
+        //     throw new Exception();
+        // }
+        return testModule;
     }
 
-    function createTestRequest(test) {
-        c = test.config;
-        c['tests'] = util.functionBody(test.tests);
+    function createTestRequest(testModule) {
+        c = testModule.config;
+        c['tests'] = util.functionBody(testModule.tests);
         c['id'] = uuid.v4();
         return c;
     }
@@ -21,8 +32,8 @@ function writeCollection(name, tests) {
         return request['id'];
     }
 
-    var tests = _.map(tests, requireTest);
-    var requests = _.map(tests, createTestRequest);
+    var testModules = _.map(tests, requireTest);
+    var requests = _.map(testModules, createTestRequest);
     var order = _.map(requests, getId);
 
     c = {
