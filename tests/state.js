@@ -1,4 +1,4 @@
-var request =  {
+exports.config =  {
       "id": "4f11ca77-9ee2-48cf-0ea8-5038cc185861",
       "headers": "Authorization: Basic c3lzOmtleQ==\n",
       "url": "localhost:9090/_state",
@@ -14,9 +14,12 @@ var request =  {
       "time": 1463788969505,
       "version": 2,
       "responses": [],
-      "tests": "tests['my'] = JSON.parse(responseBody)['state']['uuid'] == 'uuid';\ntests['Status code is 200'] = responseCode.code === 200;\n\ntests['Body matches string'] = responseBody.has('types');\n",
       "currentHelper": "normal",
       "helperAttributes": {}
 }
 
-module.exports = { request: request };
+exports.tests = function () {
+      tests['my'] = JSON.parse(responseBody)['state']['uuid'] == 'uuid';
+      tests['Status code is 200'] = responseCode.code === 200;
+      tests['Body matches string'] = responseBody.has('types');
+}

@@ -1,4 +1,4 @@
-request = {
+exports.config = {
       "id": "b35d866f-4f0a-d748-46ae-2dfe4a961d1b",
       "headers": "Authorization: Basic c3lzOmtleQ==\n",
       "url": "localhost:9090/v1/types",
@@ -14,7 +14,6 @@ request = {
       "time": 1463869542314,
       "version": 2,
       "responses": [],
-      "tests": "tests[\"Status code is 200\"] = \n    responseCode.code === 200;\n\ntests[\"Response time is less than 200ms\"] = \n    responseTime < 200;\n\ntests[\"Body matches string\"] = \n    responseBody.has(\"types\");\n",
       "currentHelper": "basicAuth",
       "helperAttributes": {
             "id": "basic",
@@ -24,4 +23,8 @@ request = {
       }
 }
 
-module.exports = { request: request };
+exports.tests = function () {
+      tests['Status code is 200'] = responseCode.code === 200;
+      tests['Response time is less than 500ms'] = responseTime < 500;
+      tests['Body matches string'] = responseBody.has('types');
+}

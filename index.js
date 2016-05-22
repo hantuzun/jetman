@@ -1,22 +1,33 @@
 var fs = require('fs');
 var jsonfile = require('jsonfile');
 var _ = require('underscore');
+var uuid = require('node-uuid');
+
+var util = require('./lib/util.js');
 
 collectionName = 'example_colection'
 testDir = 'tests'
 order = ['state', 'types']
 
-var tests = _.map(order, function(str){ return require('./' + testDir + '/' + str + '.js'); });
-var requests = _.map(tests, function(test){ return test.request });
-var ids = _.map(requests, function(request){ return request['id'] });
+function requireTest(testName) {
+     return require('./' + testDir + '/' + testName + '.js');
+}
+
+function createTestRequest(test) {
+    c = test.config;
+    c['tests'] = util.functionBody(test.tests)
+    return c;
+}
+
+var tests = _.map(order, requireTest);
+var configs = _.map(tests, createTestRequest);
+var ids = _.map(configs, function(config){ return config['id'] });
 
 c = {
-    'id': '274d14af-c802-828c-972e-adae5e5b9ce2',
+    'id': uuid.v4(),
     'name': collectionName,
     'order': ids,
-    'folders': [],
-    'timestamp': 1463788969505,
-    'requests': requests
+    'requests': configs
 }
 
 jsonfile.writeFileSync(collectionName + '.postman_collection', c);
