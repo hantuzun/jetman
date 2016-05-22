@@ -15,13 +15,18 @@ function requireTest(testName) {
 
 function createTestRequest(test) {
     c = test.config;
-    c['tests'] = util.functionBody(test.tests)
+    c['tests'] = util.functionBody(test.tests);
+    c['id'] = uuid.v4();
     return c;
+}
+
+function getId(config) {
+    return config['id'];
 }
 
 var tests = _.map(order, requireTest);
 var configs = _.map(tests, createTestRequest);
-var ids = _.map(configs, function(config){ return config['id'] });
+var ids = _.map(configs, getId);
 
 c = {
     'id': uuid.v4(),

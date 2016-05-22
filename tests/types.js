@@ -1,10 +1,8 @@
 exports.config = {
       'name': 'types request',
-      'url': 'localhost:9090/v1/types',
-      'headers': 'Authorization: Basic c3lzOmtleQ==\n',
       'method': 'GET',
-      'dataMode': 'params',
-      'id': 'b35d866f-4f0a-d748-46ae-2dfe4a961d1b'
+      'url': 'localhost:9090/v1/types',
+      'headers': 'Authorization: Basic c3lzOmtleQ==\n'
 }
 
 exports.tests = function () {
