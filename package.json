@@ -1,6 +1,6 @@
 {
   "name": "jetman",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Create Postman collections programmatically",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,6 @@
     "url": "git+https://github.com/emrehan/jetman.git"
   },
   "dependencies": {
-    "jsonfile": "2.3.1",
     "js-schema": "1.0.1",
     "underscore": "1.8.3",
     "node-uuid": "1.4.7"
