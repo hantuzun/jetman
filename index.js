@@ -1,23 +1,33 @@
 var _ = require('underscore');
 var fs = require('fs');
 var jsonfile = require('jsonfile');
+var schema = require('js-schema');
 var uuid = require('node-uuid');
 
 var util = require('./lib/util.js');
 
+
 function createCollection(name, tests) {
+    testModuleSchema = schema({
+        test : Function,
+        config : {
+            url: String
+        }
+    });
+
     function requireTest(test) {
-        // try {
-        testModule =  require(test);
-        // } catch (Exception e) {
-        //     throw new Exception();
-        // }
-        // if (testModule.config == undefined) {
-        //     throw new Exception();
-        // }
-        // if (testModule.tests == undefined ) {
-        //     throw new Exception();
-        // }
+        try {
+            testModule = require(test);
+        } catch (err) {
+            throw new Error('Not found the module: ' + test);
+        }
+
+        if ( !testModuleSchema(testModule) ) {
+            console.error( 'Validation error for module: ' + util.getModuleId(testModule, module) );
+            console.error( testModuleSchema.errors(testModule) );
+            throw new Error('Validation error for module: ' + util.getModuleId(testModule, module));
+        }
+
         return testModule;
     }
 
@@ -35,9 +45,9 @@ function createCollection(name, tests) {
         return request['id'];
     }
 
-    var testModules = _.map(tests, requireTest);
-    var requests = _.map(testModules, createTestRequest);
-    var order = _.map(requests, getId);
+    testModules = _.map(tests, requireTest);
+    requests = _.map(testModules, createTestRequest);
+    order = _.map(requests, getId);
 
     c = {
         'id': uuid.v4(),
