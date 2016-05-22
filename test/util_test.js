@@ -1,6 +1,7 @@
 var util = require('../lib/util.js');
 var chai = require('chai');
-var expect = chai.expect;
+var should = chai.should();
+chai.use(require('chai-string'));
 
 var fn  = function () {
       tests['uuid is equal to "uuid"'] = JSON.parse(responseBody)['state']['uuid'] == 'uuid';
@@ -16,6 +17,12 @@ var fnBody = `
 
 describe('functionBody', function() {
   it('functionBody() should return function body as a string', function() {
-    expect(util.functionBody(fn)).to.equal(fnBody);
+    util.functionBody(fn).should.equal(fnBody);
+  });
+});
+
+describe('getModulePath', function() {
+  it('getModulePath() should return the path of the given module', function() {
+    util.getModulePath(chai, module).should.endWith('node_modules/chai/index.js');
   });
 });

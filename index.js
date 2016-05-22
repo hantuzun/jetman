@@ -12,9 +12,9 @@ var testModuleSchema = schema({
 
 function validateTestModule(testModule) {
     if ( !testModuleSchema(testModule) ) {
-        console.error( 'Validation error for module: ' + util.getModuleId(testModule, module) );
+        console.error( 'Validation error for module: ' + util.getModulePath(testModule, module) );
         console.error( testModuleSchema.errors(testModule) );
-        throw new Error('Validation error for module: ' + util.getModuleId(testModule, module));
+        throw new Error('Validation error for module: ' + util.getModulePath(testModule, module));
     }
 }
 
