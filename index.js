@@ -5,7 +5,7 @@ var uuid = require('node-uuid');
 
 var util = require('./lib/util.js');
 
-function writeCollection(name, tests) {
+function createCollection(name, tests) {
     function requireTest(test) {
         // try {
         testModule =  require(test);
@@ -46,13 +46,14 @@ function writeCollection(name, tests) {
         'requests': requests
     }
 
-    jsonfile.writeFileSync(name + '.postman_collection', c);
+    return c;
 }
 
 name = 'example'
+filename = name + '.postman_collection'
 tests = [
     './tests/state.js',
     './tests/types.js'
 ]
-
-writeCollection(name, tests);
+collection = createCollection(name, tests)
+jsonfile.writeFileSync(filename, collection);
