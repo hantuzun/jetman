@@ -14,13 +14,13 @@ Require Jetman.
 Call `createCollection(name, tests)` where `name` is the name of the collection file to be generated and `tests` is the ordered list of test script modules*.
 Here is an example for creating a Postman collection with Postman:
 
-    var jetman = require( "../jetman" );
+    var jetman = require('jetman');
     var jsonfile = require('jsonfile');
 
     name = 'example'
     tests = [
-        require ('./tests/state.js'),
-        require ('./tests/types.js')
+        require('./tests/state.js'),
+        require('./tests/types.js')
     ]
     collection = jetman.createCollection(name, tests)
     filename = name + '.postman_collection'
