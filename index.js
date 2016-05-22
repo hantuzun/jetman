@@ -1,38 +1,44 @@
+var _ = require('underscore');
 var fs = require('fs');
 var jsonfile = require('jsonfile');
-var _ = require('underscore');
 var uuid = require('node-uuid');
 
 var util = require('./lib/util.js');
 
-collectionName = 'example_colection'
-testDir = 'tests'
-order = ['state', 'types']
+function writeCollection(name, tests) {
+    function requireTest(test) {
+         return require(test);
+    }
 
-function requireTest(testName) {
-     return require('./' + testDir + '/' + testName + '.js');
+    function createTestRequest(test) {
+        c = test.config;
+        c['tests'] = util.functionBody(test.tests);
+        c['id'] = uuid.v4();
+        return c;
+    }
+
+    function getId(request) {
+        return request['id'];
+    }
+
+    var tests = _.map(tests, requireTest);
+    var requests = _.map(tests, createTestRequest);
+    var order = _.map(requests, getId);
+
+    c = {
+        'id': uuid.v4(),
+        'name': name,
+        'order': order,
+        'requests': requests
+    }
+
+    jsonfile.writeFileSync(name + '.postman_collection', c);
 }
 
-function createTestRequest(test) {
-    c = test.config;
-    c['tests'] = util.functionBody(test.tests);
-    c['id'] = uuid.v4();
-    return c;
-}
+name = 'example_colection'
+tests = [
+    './tests/state.js', 
+    './tests/types.js'
+]
 
-function getId(config) {
-    return config['id'];
-}
-
-var tests = _.map(order, requireTest);
-var configs = _.map(tests, createTestRequest);
-var ids = _.map(configs, getId);
-
-c = {
-    'id': uuid.v4(),
-    'name': collectionName,
-    'order': ids,
-    'requests': configs
-}
-
-jsonfile.writeFileSync(collectionName + '.postman_collection', c);
+writeCollection(name, tests);
