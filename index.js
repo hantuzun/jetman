@@ -23,8 +23,11 @@ function writeCollection(name, tests) {
 
     function createTestRequest(testModule) {
         c = testModule.config;
-        c['tests'] = util.functionBody(testModule.tests);
+        c['tests'] = util.functionBody(testModule.test);
         c['id'] = uuid.v4();
+        if (c['headers'] == undefined) {
+            c['headers'] = '';
+        }
         return c;
     }
 
@@ -46,9 +49,9 @@ function writeCollection(name, tests) {
     jsonfile.writeFileSync(name + '.postman_collection', c);
 }
 
-name = 'example_colection'
+name = 'example'
 tests = [
-    './tests/state.js', 
+    './tests/state.js',
     './tests/types.js'
 ]
 
