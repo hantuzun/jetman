@@ -60,5 +60,16 @@ Refer to Postman documentation for help.
 
 
 
+## Development
+Clone the repo and install dependencies with `npm install`.
+It's recommended to use jetman from another module with tests.
+
+
+
+## Testing
+Run `npm test`.
+
+
+
 ## License
 MIT License.

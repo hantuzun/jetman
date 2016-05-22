@@ -4,7 +4,7 @@
   "description": "Create Postman collections programmatically",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test"
   },
   "repository": {
     "type": "git",
@@ -13,7 +13,9 @@
   "dependencies": {
     "js-schema": "1.0.1",
     "underscore": "1.8.3",
-    "node-uuid": "1.4.7"
+    "node-uuid": "1.4.7",
+    "mocha": "2.4.5",
+    "chai": "3.5.0"
   },
   "keywords": [
     "postman",
