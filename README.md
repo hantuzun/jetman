@@ -2,6 +2,7 @@
 > Create Postman collections programmatically
 
 [![Build Status](https://travis-ci.com/emrehan/jetman.svg?token=6mGgqf5q8dpxwiXrxzAR&branch=master)](https://travis-ci.com/emrehan/jetman)
+[![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 
 
 ## Why?
@@ -10,11 +11,11 @@ Because the only way to create Postman tests is using Postman User Interfaces. W
 
 
 ## How to Use?
-Create your tests in Javascript files. *
+Create your test modules[*](#-how-to-write-test-scripts) in JavaScript.
 
 Require Jetman.
 
-Call `execute(name, tests, options, callback)`, where `name` is the name of the collection file to be generated, `tests` is the ordered list of test script modules*, `options` are the options for newman execution, and `callback` is to be executed once Newman is done executing all its tasks.
+Call `execute(name, tests, options, callback)`, where `name` is the name of the collection file to be generated, `tests` is the ordered list of test script modules[*](#-how-to-write-test-scripts), `options` are the options for newman execution, and `callback` is to be executed once Newman is done executing all its tasks.
 `options` and `callback` are optional.
 
 Here is a simple example for running tests with jetman:
