@@ -1,8 +1,10 @@
 # [Jetman](https://github.com/emrehan/jetman)
-> Create Postman collections programmatically
 
 [![Build Status](https://travis-ci.com/emrehan/jetman.svg?token=6mGgqf5q8dpxwiXrxzAR&branch=master)](https://travis-ci.com/emrehan/jetman)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
+
+##### Create Postman collections programmatically
+
 
 
 ## Why?
@@ -28,12 +30,6 @@ Here is a simple example for running tests with jetman:
     ]
 
     jetman.execute('example', tests);
-
-
-
-Run [newman](https://www.npmjs.com/package/newman) with the generated collection file.
-
-    newman -c example.postman_collection
 
 
 
