@@ -1,4 +1,5 @@
 var _ = require('underscore');
+var newman = require('newman');
 var schema = require('js-schema');
 var uuid = require('node-uuid');
 var util = require('./lib/util.js');
@@ -9,6 +10,12 @@ var testModuleSchema = schema({
         url: String
     }
 });
+
+var defaultNewmanOptions = {
+    responseHandler: "TestResponseHandler",
+    stopOnError: false,
+    summary: true
+}
 
 function validateTestModule(testModule) {
     if ( !testModuleSchema(testModule) ) {
@@ -43,4 +50,10 @@ exports.createCollection = function (name, testModules) {
         'order': order,
         'requests': requests
     }
+}
+
+exports.execute = function(name, testModules, newmanOptions, callback) {
+    collection = this.createCollection(name, testModules, callback);
+    options = util.merge(defaultNewmanOptions, newmanOptions);
+    newman.execute(collection, options, callback);
 }

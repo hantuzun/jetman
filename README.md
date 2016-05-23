@@ -11,21 +11,23 @@ Because the only way to create Postman tests is using Postman User Interfaces. W
 
 ## How to Use?
 Create your tests in Javascript files. *
+
 Require Jetman.
-Call `createCollection(name, tests)` where `name` is the name of the collection file to be generated and `tests` is the ordered list of test script modules*.
-Here is an example for creating a Postman collection with Postman:
+
+Call `execute(name, tests, options, callback)`, where `name` is the name of the collection file to be generated, `tests` is the ordered list of test script modules*, `options` are the options for newman execution, and `callback` is to be executed once Newman is done executing all its tasks.
+`options` and `callback` are optional.
+
+Here is a simple example for running tests with jetman:
 
     var jetman = require('jetman');
-    var jsonfile = require('jsonfile');
 
-    name = 'example'
-    tests = [
+    var tests = [
         require('./tests/state.js'),
         require('./tests/types.js')
     ]
-    collection = jetman.createCollection(name, tests)
-    filename = name + '.postman_collection'
-    jsonfile.writeFileSync(filename, collection);
+
+    jetman.execute('example', tests);
+
 
 
 Run [newman](https://www.npmjs.com/package/newman) with the generated collection file.

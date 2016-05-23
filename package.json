@@ -16,7 +16,8 @@
     "node-uuid": "1.4.7",
     "mocha": "2.4.5",
     "chai": "3.5.0",
-    "chai-string": "1.2.0"
+    "chai-string": "1.2.0",
+    "newman": "2.0.9"
   },
   "keywords": [
     "postman",
