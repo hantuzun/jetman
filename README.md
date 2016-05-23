@@ -1,6 +1,6 @@
 # [Jetman](https://github.com/emrehan/jetman) [![Build Status](https://travis-ci.com/emrehan/jetman.svg?token=6mGgqf5q8dpxwiXrxzAR&branch=master)](https://travis-ci.com/emrehan/jetman) [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 
-##### Create Postman collections programmatically
+###### Create Postman collections programmatically
 
 [![NPM](https://nodei.co/npm/jetman.png?compact=true)](https://npmjs.org/package/jetman)
 
@@ -12,14 +12,14 @@ Because the only way to create Postman tests is using Postman User Interfaces. W
 
 
 ## How to Use?
+Install and require Jetman: `var jetman = require('jetman');`
+
 Create your test modules[*](#-how-to-write-test-scripts) in JavaScript.
 
-Require Jetman.
-
-Call `execute(name, tests, options, callback)`, where `name` is the name of the collection file to be generated, `tests` is the ordered list of test script modules[*](#-how-to-write-test-scripts), `options` are the options for newman execution, and `callback` is to be executed once Newman is done executing all its tasks.
+Call `jetman.execute(name, tests, options, callback)`, where `name` is the name of the collection file to be generated, `tests` is the ordered list of test script modules[*](#-how-to-write-test-scripts), `options` are the options for newman execution, and `callback` is to be executed once Newman is done executing all its tasks.
 `options` and `callback` are optional.
 
-Here is a simple example for running tests with jetman:
+Here is a simple example for running tests with Jetman:
 
     var jetman = require('jetman');
 
@@ -61,7 +61,7 @@ Refer to Postman documentation for help.
 
 ## Development
 Clone the repo and install dependencies with `npm install`.
-It's recommended to use jetman from another module with tests.
+It's recommended to use Jetman from another module with tests.
 
 
 
