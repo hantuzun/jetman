@@ -11,9 +11,9 @@ Because the only way to create Postman tests is using Postman User Interfaces. W
 
 
 ## How to Use?
-Create your tests in Javascript files. *
+Create your test scripts[*](#-how-to-write-test-scripts) in JavaScript.
 Require Jetman.
-Call `createCollection(name, tests)` where `name` is the name of the collection file to be generated and `tests` is the ordered list of test script modules*.
+Call `createCollection(name, tests)` where `name` is the name of the collection file to be generated and `tests` is the ordered list of test script modules[*](#-how-to-write-test-scripts).
 Here is an example for creating a Postman collection with Postman:
 
     var jetman = require('jetman');
