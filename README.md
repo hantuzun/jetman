@@ -1,9 +1,8 @@
-# [Jetman](https://github.com/emrehan/jetman)
-
-[![Build Status](https://travis-ci.com/emrehan/jetman.svg?token=6mGgqf5q8dpxwiXrxzAR&branch=master)](https://travis-ci.com/emrehan/jetman)
-[![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
+# [Jetman](https://github.com/emrehan/jetman) [![Build Status](https://travis-ci.com/emrehan/jetman.svg?token=6mGgqf5q8dpxwiXrxzAR&branch=master)](https://travis-ci.com/emrehan/jetman) [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 
 ##### Create Postman collections programmatically
+
+[![NPM](https://nodei.co/npm/jetman.png?compact=true)](https://npmjs.org/package/jetman)
 
 
 
