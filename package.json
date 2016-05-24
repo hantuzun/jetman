@@ -11,7 +11,6 @@
     "url": "git+https://github.com/emrehan/jetman.git"
   },
   "dependencies": {
-    "js-schema": "1.0.1",
     "underscore": "1.8.3",
     "node-uuid": "1.4.7",
     "mocha": "2.4.5",

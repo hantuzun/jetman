@@ -23,6 +23,6 @@ describe('functionBody', function() {
 
 describe('getModulePath', function() {
   it('getModulePath() should return the path of the given module', function() {
-    util.getModulePath(chai, module).should.endWith('node_modules/chai/index.js');
+    util.getModulePath(chai, module.children).should.endWith('node_modules/chai/index.js');
   });
 });

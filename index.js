@@ -1,15 +1,9 @@
 var _ = require('underscore');
 var newman = require('newman');
-var schema = require('js-schema');
 var uuid = require('node-uuid');
 var util = require('./lib/util.js');
 
-var testModuleSchema = schema({
-    test : Function,
-    config : {
-        url: String
-    }
-});
+var testModuleChildren = undefined;
 
 var defaultNewmanOptions = {
     responseHandler: "TestResponseHandler",
@@ -17,35 +11,47 @@ var defaultNewmanOptions = {
     summary: true
 }
 
-function validateTestModule(testModule) {
-    if ( !testModuleSchema(testModule) ) {
-        console.error( 'Validation error for module: ' + util.getModulePath(testModule, module) );
-        console.error( testModuleSchema.errors(testModule) );
-        throw new Error('Validation error for module: ' + util.getModulePath(testModule, module));
-    }
-}
-
 function createRequest(testModule) {
-    var request = testModule.config;
-    request['id'] = uuid.v4();
-    request['tests'] = util.functionBody(testModule.test);
-    if (request['headers'] == undefined) {
-        request['headers'] = '';
+    try {
+        testModule.run();
+    } catch(err) {
+        if (testModuleChildren !== undefined) {
+            console.log('Exception thrown for module: ' + util.getModulePath(testModule, testModuleChildren));
+        } else {
+            console.log('Exception thrown for a module. Call `jetman.setModuleObject(module);` before the tests to find the faulty module.');
+        }
+        throw(err);
     }
-    return request;
 }
 
 function getId(request) {
     return request['id'];
 }
 
+exports.setModuleObject = function (module) {
+    testModuleChildren = module.children;
+}
+
+exports.send = function (request, testFunction) {
+    request['id'] = uuid.v4();
+    if (request['headers'] == undefined) {
+        request['headers'] = '';
+    }
+    if (testFunction !== undefined) {
+        request['tests'] = util.functionBody(testFunction);
+    }
+    
+    requests.push(util.deepCopy(request));
+}
+
 exports.createCollection = function (testModules, name) {
     if (name == undefined) {
         var name = ''
     }
+
+    requests = [];
     
-    _.each(testModules, validateTestModule);
-    requests = _.map(testModules, createRequest);
+    _.each(testModules, createRequest);
     order = _.map(requests, getId);
 
     return {
