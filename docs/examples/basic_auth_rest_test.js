@@ -11,7 +11,6 @@
  */
 
 base_url = 'localhost:9090'
-resource_name = 'new_resource'
 
 function merge_objects(obj1,obj2){
     var obj3 = {};
@@ -37,13 +36,13 @@ get_resources = merge_objects(auth_request, {
 put_new_resource = merge_objects(auth_request, {
     'name': 'Put `new` resource',
     'method': 'PUT',
-    'url': base_url + '/v1/resources/' + resource_name
+    'url': base_url + '/v1/resources/new_resource'
 });
 
 delete_new_resource = merge_objects(auth_request, {
     'name': 'Delete `new` resource',
     'method': 'DELETE',
-    'url': base_url + '/v1/resources/' + resource_name
+    'url': base_url + '/v1/resources/new_resource'
 });
 
 function baseTest() {
@@ -64,7 +63,7 @@ function newResourceExistsTest() {
     tests['Response time is less than 500ms'] = responseTime < 500;
     
     var jsonData = JSON.parse(responseBody);
-    tests['There is a new resource'] = JSON.stringify(jsonData['resources']) == JSON.stringify([resource_name]);
+    tests['There is a new resource'] = JSON.stringify(jsonData['resources']) == JSON.stringify(['new_resource']);
 }
 
 exports.run = function () {
