@@ -11,7 +11,7 @@
  */
 
 base_url = 'localhost:9090'
-resource_name = 'new'
+resource_name = 'new_resource'
 
 function merge_objects(obj1,obj2){
     var obj3 = {};
@@ -64,7 +64,7 @@ function newResourceExistsTest() {
     tests['Response time is less than 500ms'] = responseTime < 500;
     
     var jsonData = JSON.parse(responseBody);
-    tests['There is a new resource'] = JSON.stringify(jsonData['resources']) == JSON.stringify(['new']);
+    tests['There is a new resource'] = JSON.stringify(jsonData['resources']) == JSON.stringify([resource_name]);
 }
 
 exports.run = function () {
