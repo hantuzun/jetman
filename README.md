@@ -42,7 +42,7 @@ Below is an example test module `test.js`:
 
 
 ## Documentation
-For full documentation refer to [docs](docs/intro.md).
+For full documentation refer to [docs](docs).
 
 Jetman can execute tests with options and callback. It can also save your tests as a Postman collection.
 
