@@ -14,21 +14,22 @@ Because the only way to create Postman tests is using Postman User Interfaces. W
 ## How to Start?
 Install and require Jetman: `var jetman = require('jetman');`
 
-Create your test modules[*](#-how-to-write-test-scripts) in JavaScript.
+Create your test modules in JavaScript.
 
-Call `jetman.execute(tests)`, where `tests` are the ordered list of test script modules[*](#-how-to-write-test-scripts).
+Call `jetman.execute(tests)`, where `tests` are an ordered array of your test modules.
 
 Here is a simple example for running a test with Jetman:
 
     var jetman = require('jetman');
+    var test = require('./test.js');
 
-    jetman.execute([require('./test.js')]);
+    jetman.execute([test]);
 
 
 
-## * How to Write Test Scripts?
-Test script modules should expose a `config` object and a `test` function.
-Below is an example test script:
+## How to Write Test Modules?
+Test script modules should expose a `config` object and a `test()` function.
+Below is an example test module `test.js`:
 
     exports.config =  {
           'url': 'localhost:9090'
@@ -41,7 +42,9 @@ Below is an example test script:
 
 
 ## Documentation
-Jetman can execute tests with options and callback. It can also save collections. For full documentation refer to [docs](docs/intro.md).
+For full documentation refer to [docs](docs/intro.md).
+
+Jetman can execute tests with options and callback. It can also save your tests as a Postman collection.
 
 
 
