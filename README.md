@@ -15,19 +15,14 @@ Create your test modules[*](#-how-to-write-test-scripts) in JavaScript.
 
 Require Jetman.
 
-Call `execute(name, tests, options, callback)`, where `name` is the name of the collection file to be generated, `tests` is the ordered list of test script modules[*](#-how-to-write-test-scripts), `options` are the options for newman execution, and `callback` is to be executed once Newman is done executing all its tasks.
+Call `execute(tests, options, callback)`, where `tests` are the ordered list of test script modules[*](#-how-to-write-test-scripts), `options` are the options for newman execution, and `callback` is to be executed once Newman is done executing all its tasks.
 `options` and `callback` are optional.
 
-Here is a simple example for running tests with jetman:
+Here is a simple example for running a test with jetman:
 
     var jetman = require('jetman');
 
-    var tests = [
-        require('./tests/state.js'),
-        require('./tests/types.js')
-    ]
-
-    jetman.execute('example', tests);
+    jetman.execute([require('./test.js')]);
 
 
 
@@ -54,13 +49,14 @@ Below is an example test script:
 `config` object should have at least the `url` parameter. 
 `method` parameter defaults to `GET`.
 `name` parameter is highly recommended to include since it can help debugging failures.
+Refer to Postman documentations for help.
 
 
 ### Test Function
 This exposed function is executed after responses. 
-Parameters such as `tests`, `responseCode`, and `responseBody` injected by Postman.
+Parameters such as `tests`, `responseCode`, and `responseBody` are injected by Postman.
 It's the same as writing tests to Postman UI except the possibility of inspecting variables using `console.log()`.
-Refer to Postman documentation for help.
+Refer to Postman documentations for help.
 
 
 

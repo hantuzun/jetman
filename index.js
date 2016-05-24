@@ -39,7 +39,11 @@ function getId(request) {
     return request['id'];
 }
 
-exports.createCollection = function (name, testModules) {
+exports.createCollection = function (testModules, name) {
+    if (name == undefined) {
+        var name = ''
+    }
+    
     _.each(testModules, validateTestModule);
     requests = _.map(testModules, createRequest);
     order = _.map(requests, getId);
@@ -52,8 +56,8 @@ exports.createCollection = function (name, testModules) {
     }
 }
 
-exports.execute = function(name, testModules, newmanOptions, callback) {
-    collection = this.createCollection(name, testModules, callback);
+exports.execute = function(testModules, newmanOptions, callback) {
+    collection = this.createCollection(testModules);
     options = util.merge(defaultNewmanOptions, newmanOptions);
     newman.execute(collection, options, callback);
 }
