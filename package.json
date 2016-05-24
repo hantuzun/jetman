@@ -1,6 +1,6 @@
 {
   "name": "jetman",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Create Postman collections programmatically",
   "main": "index.js",
   "scripts": {
