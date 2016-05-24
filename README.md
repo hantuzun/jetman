@@ -1,8 +1,9 @@
-# [Jetman](https://github.com/emrehan/jetman)
-> Create Postman collections programmatically
+# [Jetman](https://github.com/emrehan/jetman) [![Build Status](https://travis-ci.com/emrehan/jetman.svg?token=6mGgqf5q8dpxwiXrxzAR&branch=master)](https://travis-ci.com/emrehan/jetman) [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 
-[![Build Status](https://travis-ci.com/emrehan/jetman.svg?token=6mGgqf5q8dpxwiXrxzAR&branch=master)](https://travis-ci.com/emrehan/jetman)
-[![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
+###### Create Postman collections programmatically
+
+[![NPM](https://nodei.co/npm/jetman.png?compact=true)](https://npmjs.org/package/jetman)
+
 
 
 ## Why?
@@ -10,25 +11,18 @@ Because the only way to create Postman tests is using Postman User Interfaces. W
 
 
 
-## How to Use?
+## How to Start?
+Install and require Jetman: `var jetman = require('jetman');`
+
 Create your test modules[*](#-how-to-write-test-scripts) in JavaScript.
 
-Require Jetman.
+Call `jetman.execute(tests)`, where `tests` are the ordered list of test script modules[*](#-how-to-write-test-scripts).
 
-Call `execute(tests, options, callback)`, where `tests` are the ordered list of test script modules[*](#-how-to-write-test-scripts), `options` are the options for newman execution, and `callback` is to be executed once Newman is done executing all its tasks.
-`options` and `callback` are optional.
-
-Here is a simple example for running a test with jetman:
+Here is a simple example for running a test with Jetman:
 
     var jetman = require('jetman');
 
     jetman.execute([require('./test.js')]);
-
-
-
-Run [newman](https://www.npmjs.com/package/newman) with the generated collection file.
-
-    newman -c example.postman_collection
 
 
 
@@ -45,24 +39,15 @@ Below is an example test script:
     }
 
 
-### Config Object
-`config` object should have at least the `url` parameter. 
-`method` parameter defaults to `GET`.
-`name` parameter is highly recommended to include since it can help debugging failures.
-Refer to Postman documentations for help.
 
-
-### Test Function
-This exposed function is executed after responses. 
-Parameters such as `tests`, `responseCode`, and `responseBody` are injected by Postman.
-It's the same as writing tests to Postman UI except the possibility of inspecting variables using `console.log()`.
-Refer to Postman documentations for help.
+## Documentation
+Jetman can execute tests with options and callback. It can also save collections. For full documentation refer to [docs](docs/intro.md).
 
 
 
 ## Development
 Clone the repo and install dependencies with `npm install`.
-It's recommended to use jetman from another module with tests.
+It's recommended to use Jetman from another module with tests.
 
 
 
