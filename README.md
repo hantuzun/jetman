@@ -1,4 +1,4 @@
-# [Jetman](https://github.com/emrehan/jetman) [![Build Status](https://travis-ci.com/emrehan/jetman.svg?token=6mGgqf5q8dpxwiXrxzAR&branch=master)](https://travis-ci.com/emrehan/jetman) [![Gitter](https://badges.gitter.im/emrehan/jetman.svg)](https://gitter.im/emrehan/jetman?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
+# [Jetman](https://github.com/emrehan/jetman) [![Build Status](https://travis-ci.com/emrehan/jetman.svg?token=6mGgqf5q8dpxwiXrxzAR&branch=master)](https://travis-ci.com/emrehan/jetman) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/) [![Gitter](https://badges.gitter.im/emrehan/jetman.svg)](https://gitter.im/emrehan/jetman?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 
 ###### Create Postman collections programmatically
 
