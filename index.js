@@ -45,17 +45,19 @@ exports.setModuleObject = function (module) {
 
 exports.send = function (request, testFunction) {
   var request_id = uuid.v4()
+  request['folder'] = folder_id
   request['id'] = request_id
+  folder_order.push(request_id)
+  order.push(request_id)
+  if (request['name'] === undefined) {
+    request['name'] = ''
+  }
   if (request['headers'] === undefined) {
     request['headers'] = ''
   }
   if (testFunction !== undefined) {
     request['tests'] = util.functionBody(testFunction)
   }
-  request['folder'] = folder_id
-  folder_order.push(request_id)
-  order.push(request_id)
-
   requests.push(util.deepCopy(request))
 }
 
