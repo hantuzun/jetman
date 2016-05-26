@@ -1,7 +1,7 @@
 {
   "name": "jetman",
   "description": "Create Postman collections programmatically",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "engine": "node 6.2.0",
   "main": "index.js",
   "scripts": {
