@@ -20,12 +20,12 @@ Below is an example test module `test.js`:
     }
 
     function test() {
-        tests['Status code is 200'] = responseCode.code === 200;
-        tests['Response time is less than 50ms'] = responseTime < 50;
+        tests['Status code is 200'] = responseCode.code === 200
+        tests['Response time is less than 50ms'] = responseTime < 50
     }
 
     exports.run = function () {
-        jetman.send(request, test);
+        jetman.send(request, test)
     }
 
 
@@ -42,7 +42,7 @@ This exposed function is executed after responses.
 
 
 ## Running Tests
-Install and require Jetman: `var jetman = require('jetman');`
+Install and require Jetman: `var jetman = require('jetman')`
 
 Create your test modules[*](#-how-to-write-test-scripts) in JavaScript.
 
@@ -52,9 +52,9 @@ The full method signature is `jetman.execute(tests, options, callback)`
 
 Here is a simple example for running a test with Jetman:
 
-    var jetman = require('jetman');
+    var jetman = require('jetman')
 
-    jetman.execute([require('./test.js')]);
+    jetman.execute([require('./test.js')])
 
 
 ## Sharing the Module Object for Jetman
@@ -63,7 +63,7 @@ Every node.js module has a [module object](https://nodejs.org/api/modules.html#m
 Sharing this object with Jetman help it providing test module names while running tests or in case of errors.
 Therefore, it is strongly recommended to add the following line just after requiring Jetman.
 
-    jetman.setModuleObject(module);
+    jetman.setModuleObject(module)
 
 
 
