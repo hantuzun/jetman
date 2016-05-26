@@ -4,30 +4,28 @@
 
 ## Writing Tests
 Test modules should expose a `run()` function. 
-Inside `run()` function `jetman.send(request, testFunction)`
-`request` is a Postman request object. 
-`testFunction` is an optional test function with no parameters to be executed by Postman.
+Inside `run()` function `jetman.send(request, testFunction)` where`request` is a Postman request object and `testFunction` is an optional test function (with no parameters) to be executed by Postman.
 
-Any function body you may pass to Postman would be executed in Postman sandbox, therefore may have no access the variables you will can create outside its scope.
+`testFunction` functions are executed  in Postman sandbox, therefore may have no access the variables you will can create outside its scope.
 However, parameters such as `tests`, `responseCode`, and `responseBody` are injected by Postman.
 It's similar to writing tests to Postman UI except the possibility of inspecting variables using `console.log()`.
-For further help refer to Postman documentations or ask us at [Jetman Gitter Room](https://gitter.im/emrehan/jetman).
+For further help refer to [Postman documentations](https://www.getpostman.com/docs/sandbox) or ask us at [Jetman Gitter Room](https://gitter.im/emrehan/jetman).
 
 Below is an example test module `test.js`:
 
-    request =  {
+    request = {
         'name': 'Root endpoint works',
         'method': 'GET',
         'url': 'localhost:9090'
     }
 
-    function baseTest() {
+    function test() {
         tests['Status code is 200'] = responseCode.code === 200;
-        tests['Response time is less than 500ms'] = responseTime < 500;
+        tests['Response time is less than 50ms'] = responseTime < 50;
     }
 
     exports.run = function () {
-        jetman.send(request, baseTest);
+        jetman.send(request, test);
     }
 
 
@@ -35,7 +33,7 @@ Below is an example test module `test.js`:
 `config` object should have at least the `url` parameter. 
 `method` parameter defaults to `GET`.
 `name` parameter is highly recommended to include since it can help debugging failures.
-For further help refer to Postman documentations or ask us at [Jetman Gitter Room](https://gitter.im/emrehan/jetman).
+For further help refer to [Postman documentations](https://www.getpostman.com/docs/requests) or ask us at [Jetman Gitter Room](https://gitter.im/emrehan/jetman).
 
 
 ### Test Function
@@ -57,6 +55,15 @@ Here is a simple example for running a test with Jetman:
     var jetman = require('jetman');
 
     jetman.execute([require('./test.js')]);
+
+
+## Sharing the Module Object for Jetman
+
+Every node.js module has a [module object](https://nodejs.org/api/modules.html#modules_the_module_object). 
+Sharing this object with Jetman help it providing test module names while running tests or in case of errors.
+Therefore, it is strongly recommended to add the following line just after requiring Jetman.
+
+    jetman.setModuleObject(module);
 
 
 

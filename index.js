@@ -3,6 +3,11 @@ var newman = require('newman');
 var uuid = require('node-uuid');
 var util = require('./lib/util.js');
 
+var requests = [];
+var folders = [];
+var folder_order = [];
+var order = [];
+
 var testModuleChildren = undefined;
 
 var defaultNewmanOptions = {
@@ -13,7 +18,17 @@ var defaultNewmanOptions = {
 
 function createRequest(testModule) {
     try {
+        folder_id = uuid.v4();
+        name = util.getModuleFilename(testModule, testModuleChildren);
+        folder_order = [];
+
         testModule.run();
+
+        folders.push(util.deepCopy({
+            id: folder_id,
+            name: name,
+            order: util.deepCopy(folder_order)
+        }));
     } catch(err) {
         if (testModuleChildren !== undefined) {
             console.log('Exception thrown for module: ' + util.getModulePath(testModule, testModuleChildren));
@@ -33,37 +48,49 @@ exports.setModuleObject = function (module) {
 }
 
 exports.send = function (request, testFunction) {
-    request['id'] = uuid.v4();
+    request_id = uuid.v4();
+    request['id'] = request_id;
     if (request['headers'] == undefined) {
         request['headers'] = '';
     }
     if (testFunction !== undefined) {
         request['tests'] = util.functionBody(testFunction);
     }
+    request['folder'] = folder_id;
+    folder_order.push(request_id);
+    order.push(request_id);
     
     requests.push(util.deepCopy(request));
 }
 
 exports.createCollection = function (testModules, name) {
     if (name == undefined) {
-        var name = ''
+        var name = '';
     }
 
     requests = [];
-    
     _.each(testModules, createRequest);
-    order = _.map(requests, getId);
 
-    return {
-        'id': uuid.v4(),
-        'name': name,
-        'order': order,
-        'requests': requests
+    if (testModuleChildren == undefined) {
+        return {
+            'id': uuid.v4(),
+            'name': name,
+            'order': order,
+            'requests': requests
+        }
+    } else {
+        return {
+            'id': uuid.v4(),
+            'name': name,
+            'order': [],
+            'folders': folders,
+            'requests': requests
+        }
     }
 }
 
 exports.execute = function(testModules, newmanOptions, callback) {
-    collection = this.createCollection(testModules);
-    options = util.merge(defaultNewmanOptions, newmanOptions);
+    var collection = this.createCollection(testModules);
+    var options = util.merge(defaultNewmanOptions, newmanOptions);
     newman.execute(collection, options, callback);
 }
