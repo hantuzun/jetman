@@ -22,10 +22,10 @@ Because the only way to create Postman tests is using Postman User Interfaces. W
 
 
 
-## How to Start?
-Install and require Jetman: `var jetman = require('jetman');`
+## How to Use?
+Install and require Jetman: `jetman = require('jetman');`
 
-Create your test modules in JavaScript.
+Write your test modules in JavaScript files.
 
 Call `jetman.execute(tests)`, where `tests` are an ordered array of your test modules.
 
@@ -38,25 +38,25 @@ Here is a simple example for running a test with Jetman:
 
 
 
-## How to Write Test Modules?
-Test script modules must expose a `run()` function and inside that they can call `jetman.send(request, testFunction)` method.
-`request` is a Postman request object. `testFunction` is an optional test function.
+## How to Write Tests?
+Test modules must expose a `run()` function and inside that they should call `jetman.send(request, testFunction)` method to use Postman.
+In this function `request` is a Postman request object and `testFunction` is an optional test function.
 
-Below is an example test module `test.js`:
+Below is an example test module named `test.js`:
 
-    request =  {
+    var request =  {
         'name': 'Root endpoint works',
         'method': 'GET',
         'url': 'localhost:9090'
     }
 
-    function baseTest() {
+    function test() {
         tests['Status code is 200'] = responseCode.code === 200;
         tests['Response time is less than 500ms'] = responseTime < 500;
     }
 
     exports.run = function () {
-        jetman.send(request, baseTest);
+        jetman.send(request, test);
     }
 
 
@@ -82,7 +82,7 @@ Run `npm test`.
 
 
 ## License
-[MIT License](LICENSE)
+[MIT](LICENSE)
 
 [![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)
 
