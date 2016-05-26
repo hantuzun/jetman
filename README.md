@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  <a href="https://npmjs.org/package/jetman"<img alt="NPM Version" src=""https://img.shields.io/npm/v/jetman.svg""></a>
+  <a href="https://npmjs.org/package/jetman"><img alt="NPM Version" src="https://img.shields.io/npm/v/jetman.svg"></a>
   <a href="https://travis-ci.com/emrehan/jetman"><img alt="Build Status" src="https://travis-ci.com/emrehan/jetman.svg?token=6mGgqf5q8dpxwiXrxzAR&branch=master"></a>
   <a href="http://standardjs.com/"><img alt="JavaScript Standard Style" src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg"></a>
   <a href="https://gitter.im/emrehan/jetman?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge"><img alt="Gitter" src="https://badges.gitter.im/emrehan/jetman.svg"></a>
