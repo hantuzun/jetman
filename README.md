@@ -33,6 +33,7 @@ Introducing Jetman!
 
 Here is a simple application for running one Jetman test:
 
+###### `index.js`
 ```js
 jetman = require('jetman');
 var test = require('./test.js');
@@ -46,8 +47,9 @@ jetman.execute([test]);
 Jetman tests are JavaScript files on your test project. They must expose a `run()` function and inside that they should call `jetman.send(request, testFunction)` method to use Postman.
 In this function `request` is a Postman request object and `testFunction` is an optional test function.
 
-Below is an example test module named `test.js`:
+Below is an example test module:
 
+###### `test.js`
 ```js
 var request =  {
   'name': 'Root endpoint works',
