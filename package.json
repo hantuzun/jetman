@@ -10,7 +10,7 @@
   "dependencies": {
     "underscore": "1.8.3",
     "node-uuid": "1.4.7",
-    "newman": "2.0.9"
+    "newman": "2.0.10"
   },
   "devDependencies": {
     "standard": "^3.0.0",
