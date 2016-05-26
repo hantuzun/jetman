@@ -4,7 +4,7 @@
 
 [![NPM](https://nodei.co/npm/jetman.png?compact=true)](https://npmjs.org/package/jetman)
 
-
+[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)
 
 ## Why?
 Because the only way to create Postman tests is using Postman User Interfaces. Well, until now. Introducing Jetman!
