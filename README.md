@@ -4,7 +4,7 @@
 </p>
 
 <p align="center">
-  Create Postman collections programmatically
+  <b>Create Postman collections programmatically</b>
 </p>
 
 <p align="center">
