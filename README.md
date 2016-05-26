@@ -69,6 +69,6 @@ Run `npm test`.
 
 
 ## License
-MIT License.
+[MIT License](LICENSE)
 
 [![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)
