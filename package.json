@@ -1,21 +1,21 @@
 {
   "name": "jetman",
-  "version": "0.2.2",
   "description": "Create Postman collections programmatically",
+  "version": "0.2.2",
+  "engine": "node 6.2.0",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test"
+    "test": "standard && mocha test"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/emrehan/jetman.git"
+  "devDependencies": {
+    "standard": "^3.0.0",
+    "mocha": "2.4.5",
+    "chai": "3.5.0",
+    "chai-string": "1.2.0"
   },
   "dependencies": {
     "underscore": "1.8.3",
     "node-uuid": "1.4.7",
-    "mocha": "2.4.5",
-    "chai": "3.5.0",
-    "chai-string": "1.2.0",
     "newman": "2.0.9"
   },
   "keywords": [
@@ -26,11 +26,14 @@
     "test",
     "testing"
   ],
-  "author": "Emrehan Tüzün <emrehan.tuzun@gmail.com> (http://tuzun.co)",
-  "license": "MIT",
+  "homepage": "https://github.com/emrehan/jetman",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emrehan/jetman.git"
+  },
   "bugs": {
     "url": "https://github.com/emrehan/jetman/issues"
   },
-  "homepage": "https://github.com/emrehan/jetman",
-  "engine": "node 6.2.0"
+  "license": "MIT",
+  "author": "Emrehan Tüzün <emrehan.tuzun@gmail.com> (http://tuzun.co)"
 }
