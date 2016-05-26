@@ -1,8 +1,21 @@
-# [Jetman](https://github.com/emrehan/jetman) [![Build Status](https://travis-ci.com/emrehan/jetman.svg?token=6mGgqf5q8dpxwiXrxzAR&branch=master)](https://travis-ci.com/emrehan/jetman) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/) [![Gitter](https://badges.gitter.im/emrehan/jetman.svg)](https://gitter.im/emrehan/jetman?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 
-###### Create Postman collections programmatically
+<p align="center">
+  <img alt="Jetman" src="https://cloud.githubusercontent.com/assets/2770895/15573377/7d6b318a-22fb-11e6-9de6-743608466c14.png">
+</p>
 
-[![NPM](https://nodei.co/npm/jetman.png?compact=true)](https://npmjs.org/package/jetman)
+<p align="center">
+  Create Postman collections programmatically
+</p>
+
+<p align="center">
+  <a href="https://npmjs.org/package/jetman"<img alt="NPM Version" src=""https://img.shields.io/npm/v/jetman.svg""></a>
+  <a href="https://travis-ci.com/emrehan/jetman"><img alt="Build Status" src="https://travis-ci.com/emrehan/jetman.svg?token=6mGgqf5q8dpxwiXrxzAR&branch=master"></a>
+  <a href="http://standardjs.com/"><img alt="JavaScript Standard Style" src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg"></a>
+  <a href="https://gitter.im/emrehan/jetman?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge"><img alt="Gitter" src="https://badges.gitter.im/emrehan/jetman.svg"></a>
+  <a href="http://doge.mit-license.org"><img alt="License" src="http://img.shields.io/:license-mit-blue.svg"></a>
+</p>
+
+
 
 ## Why?
 Because the only way to create Postman tests is using Postman User Interfaces. Well, until now. Introducing Jetman!
