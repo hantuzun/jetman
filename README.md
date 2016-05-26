@@ -18,18 +18,20 @@
 ------------------------------------------------------------------------------------------------------------------------
 
 ## Why?
-Because the only way to create Postman tests is using Postman User Interfaces. Well, until now. Introducing Jetman!
+[Postman](https://www.getpostman.com) is a great tool for testing APIs.
+
+However, its tests can only be created from [Postman Apps](https://www.getpostman.com/apps). Writing and maintaining tests on these GUIs is a pain compared to text editors. Moreover, these tests cannot be secured or shared under version control systems or cannot be debugged.
+
+Introducing Jetman!
 
 
 
-## How to Use?
-Install and require Jetman: `jetman = require('jetman');`
+## How to Use Jetman?
+ * Create a node project for testing your API and require Jetman: `jetman = require('jetman');`
+ * Write your test modules in JavaScript files.
+ * Call `jetman.execute(tests)` with your test modules.
 
-Write your test modules in JavaScript files.
-
-Call `jetman.execute(tests)`, where `tests` are an ordered array of your test modules.
-
-Here is a simple example for running a test with Jetman:
+Here is a simple application for running one Jetman test:
 
     jetman = require('jetman');
     var test = require('./test.js');
@@ -38,8 +40,8 @@ Here is a simple example for running a test with Jetman:
 
 
 
-## How to Write Tests?
-Test modules must expose a `run()` function and inside that they should call `jetman.send(request, testFunction)` method to use Postman.
+## How to Write Jetman Tests?
+Jetman tests are JavaScript files on your test project. They must expose a `run()` function and inside that they should call `jetman.send(request, testFunction)` method to use Postman.
 In this function `request` is a Postman request object and `testFunction` is an optional test function.
 
 Below is an example test module named `test.js`:
@@ -62,9 +64,9 @@ Below is an example test module named `test.js`:
 
 
 ## Documentation
-For full documentation refer to [docs](docs).
+Jetman can execute tests with options and callback. It can also save your tests as Postman collections.
 
-Jetman can execute tests with options and callback. It can also save your tests as a Postman collection.
+For full documentation refer to [docs](docs).
 
 
 
