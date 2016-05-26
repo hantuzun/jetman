@@ -33,10 +33,12 @@ Introducing Jetman!
 
 Here is a simple application for running one Jetman test:
 
-    jetman = require('jetman');
-    var test = require('./test.js');
+```js
+jetman = require('jetman');
+var test = require('./test.js');
 
-    jetman.execute([test]);
+jetman.execute([test]);
+```
 
 
 
@@ -46,20 +48,22 @@ In this function `request` is a Postman request object and `testFunction` is an 
 
 Below is an example test module named `test.js`:
 
-    var request =  {
-        'name': 'Root endpoint works',
-        'method': 'GET',
-        'url': 'localhost:9090'
-    }
+```js
+var request =  {
+  'name': 'Root endpoint works',
+  'method': 'GET',
+  'url': 'localhost:9090'
+}
 
-    function test() {
-        tests['Status code is 200'] = responseCode.code === 200;
-        tests['Response time is less than 500ms'] = responseTime < 500;
-    }
+function test() {
+  tests['Status code is 200'] = responseCode.code === 200;
+  tests['Response time is less than 500ms'] = responseTime < 500;
+}
 
-    exports.run = function () {
-        jetman.send(request, test);
-    }
+exports.run = function () {
+  jetman.send(request, test);
+}
+```
 
 
 
@@ -79,7 +83,7 @@ Write to us on our [Jetman Gitter Chat Room](https://gitter.im/emrehan/jetman)!
 
 
 ## Testing
-Run `npm test`.
+Run `npm test`. This command runs unit tests and tests the project for [JavaScript Standard Style](http://standardjs.com/) compatibility.
 
 
 
