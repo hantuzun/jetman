@@ -55,7 +55,9 @@ exports.send = function (request, testFunction) {
   if (request['headers'] === undefined) {
     request['headers'] = ''
   }
-  if (testFunction !== undefined) {
+  if (testFunction === undefined) {
+    request['tests'] = ''
+  } else {
     request['tests'] = util.functionBody(testFunction)
   }
   requests.push(util.deepCopy(request))
