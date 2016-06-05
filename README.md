@@ -26,6 +26,11 @@ Introducing Jetman!
 
 
 
+## Example Project
+An example API test project using Jetman is at: [github.com/emrehan/jetman-example](https://github.com/emrehan/jetman-example).
+
+
+
 ## How to Use Jetman?
  * Create a node project for testing your API and require Jetman: `jetman = require('jetman');`
  * Write your test modules in JavaScript files.
