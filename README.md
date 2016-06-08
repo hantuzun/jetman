@@ -1,10 +1,12 @@
 
 <p align="center">
-  <img alt="Jetman" src="https://cloud.githubusercontent.com/assets/2770895/15573377/7d6b318a-22fb-11e6-9de6-743608466c14.png">
+  <a href="https://npmjs.com/package/jetman">
+    <img alt="Jetman" src="https://cloud.githubusercontent.com/assets/2770895/15573377/7d6b318a-22fb-11e6-9de6-743608466c14.png">
+  </a>
 </p>
 
-<p align="center">
-  <b>Create Postman collections programmatically</b>
+<p align="center", style="color:red;">
+  <b>A better tool for testing APIs</b>
 </p>
 
 <p align="center">
@@ -13,21 +15,17 @@
   <a href="http://standardjs.com/"><img alt="JavaScript Standard Style" src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg"></a>
   <a href="https://gitter.im/emrehan/jetman?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge"><img alt="Gitter" src="https://badges.gitter.im/emrehan/jetman.svg"></a>
   <a href="http://doge.mit-license.org"><img alt="License" src="http://img.shields.io/:license-mit-blue.svg"></a>
+  <a href="https://david-dm.org/emrehan/jetman"><img alt="Dependencies" src="https://img.shields.io/david/emrehan/jetman.svg"></a>
 </p>
 
 ------------------------------------------------------------------------------------------------------------------------
 
 ## Why?
-[Postman](https://www.getpostman.com) is a great tool for testing APIs.
+Jetman aspires to be the best tool for testing APIs.
 
-However, its tests can only be created from [Postman Apps](https://www.getpostman.com/apps). Writing and maintaining tests on these GUIs is a pain compared to text editors. Moreover, these tests cannot be secured or shared under version control systems or cannot be debugged.
+[Postman](https://www.getpostman.com), [Runscope](https://www.runscope.com/) or [SoapUI](https://www.soapui.org/) are nice tools for testing APIs; however, their tests can only be created from their graphical user interfaces. Writing and maintaining tests on these GUIs is a pain compared to text editors. Moreover, these tests cannot be secured and shared under version control systems or cannot be debugged easily.
 
-Introducing Jetman!
-
-
-
-## Example Project
-An example API test project using Jetman is at: [github.com/emrehan/jetman-example](https://github.com/emrehan/jetman-example).
+With Jetman you can write your API tests in JavaScripts files and solve all these problems. Jetman can also execute your tests or save them as Postman collections.
 
 
 
@@ -71,6 +69,11 @@ exports.run = function () {
   jetman.send(request, test);
 }
 ```
+
+
+
+## Example Project
+An example API test project using Jetman is at: [github.com/emrehan/jetman-example](https://github.com/emrehan/jetman-example).
 
 
 
