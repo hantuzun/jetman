@@ -12,10 +12,10 @@
 <p align="center">
   <a href="https://npmjs.org/package/jetman"><img alt="NPM Version" src="https://img.shields.io/npm/v/jetman.svg"></a>
   <a href="https://travis-ci.com/emrehan/jetman"><img alt="Build Status" src="https://travis-ci.com/emrehan/jetman.svg?token=6mGgqf5q8dpxwiXrxzAR&branch=master"></a>
+  <a href="https://david-dm.org/emrehan/jetman"><img alt="Dependencies" src="https://img.shields.io/david/emrehan/jetman.svg"></a>
   <a href="http://standardjs.com/"><img alt="JavaScript Standard Style" src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg"></a>
   <a href="https://gitter.im/emrehan/jetman?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge"><img alt="Gitter" src="https://badges.gitter.im/emrehan/jetman.svg"></a>
   <a href="http://doge.mit-license.org"><img alt="License" src="http://img.shields.io/:license-mit-blue.svg"></a>
-  <a href="https://david-dm.org/emrehan/jetman"><img alt="Dependencies" src="https://img.shields.io/david/emrehan/jetman.svg"></a>
 </p>
 
 ------------------------------------------------------------------------------------------------------------------------
