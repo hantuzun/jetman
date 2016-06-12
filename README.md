@@ -11,7 +11,7 @@
 
 <p align="center">
   <a href="https://npmjs.org/package/jetman"><img alt="NPM Version" src="https://img.shields.io/npm/v/jetman.svg"></a>
-  <a href="https://travis-ci.com/hantuzun/jetman"><img alt="Build Status" src="https://travis-ci.com/hantuzun/jetman.svg?token=6mGgqf5q8dpxwiXrxzAR&branch=master"></a>
+  <a href="https://travis-ci.org/hantuzun/jetman"><img alt="Build Status" src="https://travis-ci.org/hantuzun/jetman.svg"></a>
   <a href="https://david-dm.org/hantuzun/jetman"><img alt="Dependencies" src="https://img.shields.io/david/hantuzun/jetman.svg"></a>
   <a href="http://standardjs.com/"><img alt="JavaScript Standard Style" src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg"></a>
   <a href="https://gitter.im/hantuzun/jetman?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge"><img alt="Gitter" src="https://badges.gitter.im/hantuzun/jetman.svg"></a>
