@@ -1,6 +1,6 @@
 var _ = require('underscore')
 var newman = require('newman')
-var uuid = require('node-uuid')
+var uuid = require('uuid')
 var util = require('./lib/util.js')
 
 var testModuleChildren
