@@ -102,4 +102,4 @@ Run `npm test`. This command runs unit tests and tests the project for [JavaScri
 
 [![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)
 
-[![Analytics](https://ga-beacon.appspot.com/UA-78341852-1/chromeskel_a/readme?pixel)](http://tuzun.co)
+[![Analytics](https://ga-beacon.appspot.com/UA-78341852-1/chromeskel_a/readme?pixel)](http://hantuzun.com)

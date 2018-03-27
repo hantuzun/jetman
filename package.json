@@ -1,14 +1,14 @@
 {
   "name": "jetman",
   "description": "Create Postman collections programmatically",
-  "version": "0.2.8",
-  "engine": "node 6.2.0",
+  "version": "0.4.0",
+  "engine": "node 9.9.0",
   "main": "index.js",
   "scripts": {
     "test": "standard && mocha test"
   },
   "dependencies": {
-    "newman": "2.1.1",
+    "newman": "3.9.3",
     "underscore": "1.8.3",
     "uuid": "^3.0.0"
   },
@@ -31,14 +31,14 @@
     "test",
     "testing"
   ],
-  "homepage": "https://github.com/emrehan/jetman",
+  "homepage": "https://github.com/hantuzun/jetman",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/emrehan/jetman.git"
+    "url": "git+https://github.com/hantuzun/jetman.git"
   },
   "bugs": {
-    "url": "https://github.com/emrehan/jetman/issues"
+    "url": "https://github.com/hantuzun/jetman/issues"
   },
   "license": "MIT",
-  "author": "Emrehan Tüzün <emrehan.tuzun@gmail.com> (http://tuzun.co)"
+  "author": "Han Tuzun <mail@hantuzun.com> (https://hantuzun.com)"
 }

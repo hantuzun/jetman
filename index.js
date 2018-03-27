@@ -5,29 +5,32 @@ var util = require('./lib/util.js')
 
 var testModuleChildren
 
+var collectionId = uuid.v4()
 var requests = []
 var folders = []
-var folder_order = []
-var order = []
-var folder_id
+var folderOrder = []
+var foldersOrder = []
+var folderId
 
 var defaultNewmanOptions = {
   responseHandler: 'TestResponseHandler',
   stopOnError: false,
-  summary: true
+  summary: true,
+  timeout: 24 * 60 * 60 * 1000
 }
 
 function createRequest (testModule) {
   try {
-    folder_id = uuid.v4()
-    folder_order = []
+    folderId = uuid.v4()
+    folderOrder = []
 
     testModule.run()
 
+    foldersOrder.push(folderId)
     folders.push(util.deepCopy({
-      id: folder_id,
+      id: folderId,
       name: util.getModuleFilename(testModule, testModuleChildren),
-      order: util.deepCopy(folder_order)
+      order: util.deepCopy(folderOrder)
     }))
   } catch(err) {
     if (testModuleChildren !== undefined) {
@@ -44,11 +47,10 @@ exports.setModuleObject = function (module) {
 }
 
 exports.send = function (request, testFunction) {
-  var request_id = uuid.v4()
-  request['folder'] = folder_id
-  request['id'] = request_id
-  folder_order.push(request_id)
-  order.push(request_id)
+  var requestId = uuid.v4()
+  folderOrder.push(requestId)
+
+  request['id'] = requestId
   if (request['name'] === undefined) {
     request['name'] = ''
   }
@@ -65,7 +67,7 @@ exports.send = function (request, testFunction) {
 
 exports.createCollection = function (testModules, name) {
   if (name === undefined) {
-    name = ''
+    name = 'Jetman Collection'
   }
 
   requests = []
@@ -73,16 +75,18 @@ exports.createCollection = function (testModules, name) {
 
   if (testModuleChildren === undefined) {
     return {
-      'id': uuid.v4(),
+      'id': collectionId,
       'name': name,
-      'order': order,
+      'order': [],
+      'foldersOrder': foldersOrder,
       'requests': requests
     }
   } else {
     return {
-      'id': uuid.v4(),
+      'id': collectionId,
       'name': name,
       'order': [],
+      'foldersOrder': foldersOrder,
       'folders': folders,
       'requests': requests
     }
@@ -90,7 +94,12 @@ exports.createCollection = function (testModules, name) {
 }
 
 exports.execute = function (testModules, newmanOptions, callback) {
+  var pjson = require('./package.json')
+  console.log('Jetman version ' + pjson.version)
   var collection = this.createCollection(testModules)
-  var options = util.merge(defaultNewmanOptions, newmanOptions)
-  newman.execute(collection, options, callback)
+  var options = _.extend({collection: collection, reporters: 'cli'}, defaultNewmanOptions, newmanOptions)
+  newman.run(
+    options,
+    callback
+  )
 }

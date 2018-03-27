@@ -9,7 +9,7 @@ Inside `run()` function `jetman.send(request, testFunction)` where`request` is a
 `testFunction` functions are executed  in Postman sandbox, therefore may have no access the variables you will can create outside its scope.
 However, parameters such as `tests`, `responseCode`, and `responseBody` are injected by Postman.
 It's similar to writing tests to Postman UI except the possibility of inspecting variables using `console.log()`.
-For further help refer to [Postman documentations](https://www.getpostman.com/docs/sandbox) or ask us at [Jetman Gitter Room](https://gitter.im/emrehan/jetman).
+For further help refer to [Postman documentations](https://www.getpostman.com/docs/sandbox) or ask us at [Jetman Gitter Room](https://gitter.im/hantuzun/jetman).
 
 Below is an example test module `test.js`:
 
@@ -33,13 +33,49 @@ Below is an example test module `test.js`:
 `config` object should have at least the `url` parameter. 
 `method` parameter defaults to `GET`.
 `name` parameter is highly recommended to include since it can help debugging failures.
-For further help refer to [Postman documentations](https://www.getpostman.com/docs/requests) or ask us at [Jetman Gitter Room](https://gitter.im/emrehan/jetman).
+For further help refer to [Postman documentations](https://www.getpostman.com/docs/requests) or ask us at [Jetman Gitter Room](https://gitter.im/hantuzun/jetman).
 
 
 ### Test Function
 This exposed function is executed after responses. 
 
 
+
+### Callbacks
+
+You can pass a callback to Jetman, which passes that callback to `newman.run(options,callback)` method.
+
+Documentation on `newman.run` callback function is available on Newman homepage: https://github.com/postmanlabs/newman#newmanruncallbackerror-object--summary-object
+
+Using this callback, you can fail `jetman.execute`. This could be valuable on continious testing.
+
+Example callback usage: 
+
+```js
+jetman.execute(tests, options, function (err, summary) {
+  if (err) {
+    console.error(err)
+    throw new Error('Jetman encountered an error!')
+  }
+
+  if (summary.error) {
+    console.error(summary.error)
+    throw new Error('Jetman encountered an error!')
+  }
+
+  if (summary.run.error) {
+    console.error(summary.run.error)
+    throw new Error('Jetman run encountered an error!')
+  }
+  
+  if (summary.run.failures.length > 0) {
+    console.error(summary.run.failures)
+    throw new Error('Jetman run encountered failures!')
+  }
+
+  console.log('Jetman run succeeded.')
+})
+```
 
 ## Running Tests
 Install and require Jetman: `var jetman = require('jetman')`
